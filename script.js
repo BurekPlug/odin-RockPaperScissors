@@ -1,10 +1,13 @@
 /* global variables */
 var humanScore = 0;
 var computerScore = 0;
+const NUMBEROFROUNDS = 5;
+
+var humanSelection = 0;
+var computerSelection = 0;
 
 function getComputerChoice (){
     let randomNumber = Math.random()*  30;
-    console.log(randomNumber);
     if (randomNumber < 10) {
         console.log("Computer: Rock!")
         return 1;
@@ -23,7 +26,7 @@ function getComputerChoice (){
 
 function getHumanChoice (){
     let choice = prompt("Please input your choice: Either 'Rock', 'Paper' oder 'Scissors'");
-    console.log(choice);
+    console.log("User: " + choice);
     switch(choice.toUpperCase()) {
         case "ROCK":
             return 1;
@@ -37,9 +40,11 @@ function getHumanChoice (){
 }
 
 function playRound(humanChoice, computerChoice) {
+   
     if (humanChoice == computerChoice)
     {
         console.log("Tie.");
+        return 0;
     }
 
     else {
@@ -49,11 +54,13 @@ function playRound(humanChoice, computerChoice) {
             {
                 /* Rock vs. Paper */
                 console.log("You lose.");
+                return -1;
             }
 
             else
             {
                 console.log("You win.");
+                return +1;
             }
         }
         else if (humanChoice == 2)
@@ -62,37 +69,71 @@ function playRound(humanChoice, computerChoice) {
             {
                 /* Paper vs. Scissors */
                 console.log("You lose.");
+                return -1;
             }
 
             else
             {
                 console.log("You win.");
+                return +1;
             }
         }
-        else
+        else if (humanChoice == 3)
         { 
             if  (computerChoice == 1)
             {
                 /* Scissors vs. Rock */
                 console.log("You lose.");
+                return -1;
             }
 
             else
             {
                 console.log("You win.");
+                return +1;
             }
+        }
+        else {
+            console.log("...Try Again.");
+            return undefined;
         }
     }
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+function evalScore(result) {
+    switch(result) {
+        case 1:
+            humanScore++;
+            break;
+        case -1:
+            computerScore++;
+            break;
+        case 0:
+            humanScore++;
+            computerScore++;
+            break;
+        default:
+            break;
+    }
+    console.log("Human : Computer - " + humanScore + " : " + computerScore);
+}
 
-playRound(humanSelection, computerSelection);
+
+function playGame() 
+{
+    humanScore = computerScore = 0;
+    for (let i = 0; i < NUMBEROFROUNDS; i++) 
+    {
+        humanSelection = getHumanChoice();
+        computerSelection = getComputerChoice();
+        evalScore(playRound(humanSelection, computerSelection));
+
+    }
+};
 
 
-console.log("Hello World!");
 
+playGame();
 
 //getComputerChoice();
 //console.log(getHumanChoice());
