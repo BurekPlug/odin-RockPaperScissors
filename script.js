@@ -6,17 +6,17 @@ function getComputerChoice (){
     let randomNumber = Math.random()*  30;
     console.log(randomNumber);
     if (randomNumber < 10) {
-        console.log("Rock!")
+        console.log("Computer: Rock!")
         return 1;
     }
 
     else if (randomNumber >= 10 && randomNumber < 20) {
-        console.log("Paper!")
+        console.log("Computer: Paper!")
         return 2;
     }
 
     else {
-        console.log("Scissors!")
+        console.log("Computer: Scissors!")
         return 3;
     }
 };
@@ -29,7 +29,7 @@ function getHumanChoice (){
             return 1;
         case "PAPER":
             return 2;
-        case "SCISSOR":
+        case "SCISSORS":
             return 3;
         default:
             console.log("invalid choice!");
@@ -39,7 +39,7 @@ function getHumanChoice (){
 function playRound(humanChoice, computerChoice) {
     if (humanChoice == computerChoice)
     {
-        console.log("Tie");
+        console.log("Tie.");
     }
 
     else {
@@ -48,6 +48,32 @@ function playRound(humanChoice, computerChoice) {
             if  (computerChoice == 2)
             {
                 /* Rock vs. Paper */
+                console.log("You lose.");
+            }
+
+            else
+            {
+                console.log("You win.");
+            }
+        }
+        else if (humanChoice == 2)
+        { 
+            if  (computerChoice == 3)
+            {
+                /* Paper vs. Scissors */
+                console.log("You lose.");
+            }
+
+            else
+            {
+                console.log("You win.");
+            }
+        }
+        else
+        { 
+            if  (computerChoice == 1)
+            {
+                /* Scissors vs. Rock */
                 console.log("You lose.");
             }
 
