@@ -1,12 +1,6 @@
-console.log("Hello World!");
-
+/* global variables */
 var humanScore = 0;
 var computerScore = 0;
-//getComputerChoice();
-console.log(getHumanChoice());
-
-/* Run Tests*/
-//Teststatistics();
 
 function getComputerChoice (){
     let randomNumber = Math.random()*  30;
@@ -41,6 +35,47 @@ function getHumanChoice (){
             console.log("invalid choice!");
     }
 }
+
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice == computerChoice)
+    {
+        console.log("Tie");
+    }
+
+    else {
+        if (humanChoice == 1 )
+        { 
+            if  (computerChoice == 2)
+            {
+                /* Rock vs. Paper */
+                console.log("You lose.");
+            }
+
+            else
+            {
+                console.log("You win.");
+            }
+        }
+    }
+}
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
+
+
+console.log("Hello World!");
+
+
+//getComputerChoice();
+//console.log(getHumanChoice());
+
+/* Run Tests*/
+//Teststatistics();
+
+
+
 
 
 /* Test Functions */
