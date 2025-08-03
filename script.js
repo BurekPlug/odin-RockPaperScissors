@@ -1,6 +1,11 @@
 console.log("Hello World!");
 
-getComputerChoice();
+var humanScore = 0;
+var computerScore = 0;
+//getComputerChoice();
+console.log(getHumanChoice());
+
+/* Run Tests*/
 //Teststatistics();
 
 function getComputerChoice (){
@@ -22,7 +27,20 @@ function getComputerChoice (){
     }
 };
 
-
+function getHumanChoice (){
+    let choice = prompt("Please input your choice: Either 'Rock', 'Paper' oder 'Scissors'");
+    console.log(choice);
+    switch(choice.toUpperCase()) {
+        case "ROCK":
+            return 1;
+        case "PAPER":
+            return 2;
+        case "SCISSOR":
+            return 3;
+        default:
+            console.log("invalid choice!");
+    }
+}
 
 
 /* Test Functions */
