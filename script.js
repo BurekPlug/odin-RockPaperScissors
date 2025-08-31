@@ -39,12 +39,30 @@ function getHumanChoice (){
     }
 }
 
-function playRound(humanChoice, computerChoice) {
-   
+function playRound(e) {
+    console.log(e);
+    console.log(e.srcElement.id);
+    let humanChoice, computerChoice, score;
+    
+    switch (e.srcElement.id) 
+    {
+        case "btnRock":
+            humanChoice = 1;
+            break;
+        case "btnPaper":
+            humanChoice = 2;
+            break;
+        case "btnSissors":
+            humanChoice = 3;
+            break;
+    }
+
+    computerChoice = getComputerChoice();
+    
     if (humanChoice == computerChoice)
     {
         console.log("Tie.");
-        return 0;
+        score = 0;
     }
 
     else {
@@ -54,13 +72,13 @@ function playRound(humanChoice, computerChoice) {
             {
                 /* Rock vs. Paper */
                 console.log("You lose.");
-                return -1;
+                score = -1;
             }
 
             else
             {
                 console.log("You win.");
-                return +1;
+                score = +1;
             }
         }
         else if (humanChoice == 2)
@@ -69,13 +87,13 @@ function playRound(humanChoice, computerChoice) {
             {
                 /* Paper vs. Scissors */
                 console.log("You lose.");
-                return -1;
+                score = -1;
             }
 
             else
             {
                 console.log("You win.");
-                return +1;
+                score = +1;
             }
         }
         else if (humanChoice == 3)
@@ -84,20 +102,21 @@ function playRound(humanChoice, computerChoice) {
             {
                 /* Scissors vs. Rock */
                 console.log("You lose.");
-                return -1;
+                score = -1;
             }
 
             else
             {
                 console.log("You win.");
-                return +1;
+                score = +1;
             }
         }
         else {
             console.log("...Try Again.");
-            return undefined;
         }
     }
+
+    evalScore(score);
 }
 
 function evalScore(result) {
@@ -121,19 +140,19 @@ function evalScore(result) {
 
 function playGame() 
 {
+    //alert("You are about to play Rock, Paper, Scissors. Make your choice.");
     humanScore = computerScore = 0;
-    for (let i = 0; i < NUMBEROFROUNDS; i++) 
+    /*for (let i = 0; i < NUMBEROFROUNDS; i++) 
     {
         humanSelection = getHumanChoice();
         computerSelection = getComputerChoice();
         evalScore(playRound(humanSelection, computerSelection));
 
-    }
+    }*/
 };
 
 
-
-playGame();
+//playGame();
 
 //getComputerChoice();
 //console.log(getHumanChoice());
@@ -141,6 +160,14 @@ playGame();
 /* Run Tests*/
 //Teststatistics();
 
+const btnRock = document.querySelector("#btnRock");
+const btnPaper = document.querySelector("#btnPaper");
+const btnSissors = document.querySelector("#btnSissors");
+
+btnRock.addEventListener("click", (e) => playRound(e));
+btnPaper.addEventListener("click", () => {
+  alert("Hello World");});
+btnSissors.addEventListener("click", (e) => playRound(e));
 
 
 
